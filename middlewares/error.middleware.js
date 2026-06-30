@@ -35,8 +35,9 @@ const errorMiddleware = (err, req, res, next) => {
     });
   } catch (error) {
     next(error);
+    // console.error("Error in errorMiddleware:", error);
   }
 };
 
-export default errorMiddlware;
+export default errorMiddleware;
 // create a subscription --> middleware (Check for renewal date) --> middleware (check for errors) --> next --> Controllers (Which handles the actual logic of creating a subscription)
