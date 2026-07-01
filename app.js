@@ -8,12 +8,14 @@ import subscriptionRouter from "./routes/subscription.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
+import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 
 const app = express();
 
 app.use(express.json()); // this allows your app to handle JSON data in the request body, which is common in RESTful APIs.
 app.use(express.urlencoded({ extended: true })); // this allows your app to handle URL-encoded data, which is often used in form submissions.
 app.use(cookieParser()); // this allows your app to parse cookies from the request headers, which is useful for handling sessions and authentication.
+app.use(arcjetMiddleware); // this allows your app to use Arcjet's middleware for security and bot protection.
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
